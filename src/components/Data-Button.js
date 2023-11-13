@@ -17,7 +17,7 @@ const DataButton = ({ connectionStatus, receivedData, setReceivedData }) => {
   const startTimer = () => {
     const intervalId = setInterval(() => {
       setTimer((prevTimer) => prevTimer + 1);
-    }, 3000);
+    }, 1000);
     console.log("print");
     setTimerIntervalId(intervalId);
     setReceivedData("Ready to receive data");
