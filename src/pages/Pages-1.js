@@ -38,8 +38,55 @@ const Pages1 = () => {
   );
   const [receivedData, setReceivedData] = useState("No data received yet");
 
+  const [divList, setDivList] = useState([DATA]);
+
+  const printArrayElements = (array) => {
+    array.forEach((element, index) => {
+      console.log(`Element ${index + 1}:`, element);
+    });
+  };
+
+  
+
+  const addDivToList = () => {
+    const newDiv = <div key={divList.length}>New Div</div>;
+    setDivList([...divList, newDiv]);
+    printArrayElements(divList);
+  };
+
+
+  const dataFn = () => {
+    if (connectionStatus == "Connected") {
+      setReceivedData("Data Received");
+
+    } 
+
+    else {
+      setReceivedData("Please connect to the device first");
+    }
+    
+  };
+  const dataFn2 = () => {
+    if (receivedData == "Data Received") {
+      setReceivedData("Ready to receive data");
+    } 
+  };
+
+  const buttonFunctions = {
+    dataFn: dataFn,
+    dataFn2: dataFn2,
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+      <div>
+      {DATA.map((item) => (
+        <div key={item.id}>
+          {/* Render each item */}
+          <p>{item.title}</p>
+        </div>
+      ))}
+    </div>
       <FlatList
         data={DATA}
         renderItem={({ item }) => <Item title={item.title} />}
@@ -54,8 +101,12 @@ const Pages1 = () => {
         connectionStatus={connectionStatus}
         receivedData={receivedData}
         setReceivedData={setReceivedData}
+        buttonFunctions={buttonFunctions}
+        addDivToList={addDivToList}
       />
+      
     </SafeAreaView>
+    
   );
 };
 

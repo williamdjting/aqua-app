@@ -10,7 +10,8 @@ import {
 
 // const Separator = () => <View style={styles.separator} />;
 
-const DataButton = ({ connectionStatus, receivedData, setReceivedData }) => {
+const DataButton = ({ connectionStatus, receivedData, setReceivedData, buttonFunctions, addDivToList }) => {
+  const { dataFn, dataFn2 } = buttonFunctions;
   const [timer, setTimer] = useState(0);
   const [timerIntervalId, setTimerIntervalId] = useState(null);
 
@@ -29,22 +30,22 @@ const DataButton = ({ connectionStatus, receivedData, setReceivedData }) => {
 
   };
 
-  const dataFn = () => {
-    if (connectionStatus == "Connected") {
-      setReceivedData("Data Received");
+  // const dataFn = () => {
+  //   if (connectionStatus == "Connected") {
+  //     setReceivedData("Data Received");
 
-    } 
+  //   } 
 
-    else {
-      setReceivedData("Please connect to the device first");
-    }
+  //   else {
+  //     setReceivedData("Please connect to the device first");
+  //   }
     
-  };
-  const dataFn2 = () => {
-    if (receivedData == "Data Received") {
-      setReceivedData("Ready to receive data");
-    } 
-  };
+  // };
+  // const dataFn2 = () => {
+  //   if (receivedData == "Data Received") {
+  //     setReceivedData("Ready to receive data");
+  //   } 
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,10 +56,12 @@ const DataButton = ({ connectionStatus, receivedData, setReceivedData }) => {
           onPress={() => {
             dataFn();
             dataFn2();
+            addDivToList();
           }}
         />
       </View>
     </SafeAreaView>
+    
   );
 };
 
