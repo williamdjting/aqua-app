@@ -11,20 +11,20 @@ import {
 import ConnectButton from "../components/Connect-Button";
 import DataButton from "../components/Data-Button";
 
-const DATA = [
-  {
-    id: "1",
-    title: "First Item",
-  },
-  {
-    id: "2",
-    title: "Second Item",
-  },
-  {
-    id: "3",
-    title: "Third Item",
-  },
-];
+// const DATA = [
+//   {
+//     id: "1",
+//     title: "First Item",
+//   },
+//   {
+//     id: "2",
+//     title: "Second Item",
+//   },
+//   {
+//     id: "3",
+//     title: "Third Item",
+//   },
+// ];
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -38,7 +38,7 @@ const Pages1 = () => {
   );
   const [receivedData, setReceivedData] = useState("No data received yet");
 
-  const [divList, setDivList] = useState([DATA]);
+  const [divList, setDivList] = useState([]);
 
   const printArrayElements = (array) => {
     array.forEach((element, index) => {
@@ -49,7 +49,11 @@ const Pages1 = () => {
   
 
   const addDivToList = () => {
-    const newDiv = <div key={divList.length}>New Div</div>;
+    // const newDiv = <div key={divList.length}>New Div</div>;
+    const newDiv = {
+      id: (divList.length + 1).toString(), // Generating a new ID based on array length
+      title: `New Item ${divList.length + 1}`, // Example title
+    };
     setDivList([...divList, newDiv]);
     printArrayElements(divList);
   };
@@ -79,16 +83,16 @@ const Pages1 = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <div>
-      {DATA.map((item) => (
+      {/* <div>
+      {divList.map((item) => (
         <div key={item.id}>
           {/* Render each item */}
-          <p>{item.title}</p>
-        </div>
-      ))}
-    </div>
+          {/* <p>{item.title}</p> */}
+        {/* </div> */}
+      {/* // ))} */}
+    {/* </div> */} 
       <FlatList
-        data={DATA}
+        data={divList}
         renderItem={({ item }) => <Item title={item.title} />}
         keyExtractor={(item) => item.id}
       />
