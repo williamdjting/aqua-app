@@ -40,10 +40,13 @@ const Pages1 = () => {
 
   const [divList, setDivList] = useState([]);
 
+  const [divCounter, setDivCounter] = useState(0);
+
   const printArrayElements = (array) => {
-    array.forEach((element, index) => {
-      console.log(`Element ${index + 1}:`, element);
-    });
+    // array.forEach((element, index) => {
+      // console.log(`Element ${index + 1}:`, element);
+    // });
+    console.log(array);
   };
 
   
@@ -51,11 +54,14 @@ const Pages1 = () => {
   const addDivToList = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;
     const newDiv = {
-      id: (divList.length + 1).toString(), // Generating a new ID based on array length
-      title: `New Item ${divList.length + 1}`, // Example title
+      id: divCounter.toString(), // Generating a new ID based on array length
+      title: `Read ${divCounter}`, // Example title
+      description: `This is data for Read ${divCounter}`,
     };
-    setDivList([...divList, newDiv]);
-    printArrayElements(divList);
+    
+    setDivList([newDiv]);
+    setDivCounter(divCounter + 1);
+    printArrayElements(newDiv);
   };
 
 
@@ -91,11 +97,13 @@ const Pages1 = () => {
         {/* </div> */}
       {/* // ))} */}
     {/* </div> */} 
+
       <FlatList
         data={divList}
-        renderItem={({ item }) => <Item title={item.title} />}
+        renderItem={({ item }) => <Item title={item.title} description={item.description} />}
         keyExtractor={(item) => item.id}
       />
+
       <ConnectButton
         connectionStatus={connectionStatus}
         setConnectionStatus={setConnectionStatus}
