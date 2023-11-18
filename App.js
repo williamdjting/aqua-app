@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Pages1 from "./src/pages/Pages-1.js";
+import Pages2 from "./src/pages/Pages-2.js";
 import { NativeRouter, Route , Routes} from "react-router-native";
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
         
         {/* <Routes> */} 
           <Pages1/>
+          <Pages2/>
           {/* <Route path="/pages1" component={Pages1} /> */}
         {/* </Routes>
       </NativeRouter> */}
