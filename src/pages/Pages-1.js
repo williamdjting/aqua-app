@@ -11,6 +11,8 @@ import {
 import ConnectButton from "../components/Connect-Button";
 import DataButton from "../components/Data-Button";
 
+
+
 // const DATA = [
 //   {
 //     id: "1",
@@ -44,12 +46,10 @@ const Pages1 = () => {
 
   const printArrayElements = (array) => {
     // array.forEach((element, index) => {
-      // console.log(`Element ${index + 1}:`, element);
+    // console.log(`Element ${index + 1}:`, element);
     // });
     console.log(array);
   };
-
-  
 
   const addDivToList = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;
@@ -58,34 +58,29 @@ const Pages1 = () => {
       title: `Read ${divCounter}`, // Example title
       description: `This is data for Read ${divCounter}`,
     };
-    
+
     setDivList([newDiv]);
     setDivCounter(divCounter + 1);
     printArrayElements(newDiv);
   };
 
-
   const dataFn = () => {
     if (connectionStatus == "Connected") {
       setReceivedData("Data Received");
-
-    } 
-
-    else {
+    } else {
       setReceivedData("Please connect to the device first");
     }
-    
   };
   const dataFn2 = () => {
     if (receivedData == "Data Received") {
       setReceivedData("Ready to receive data");
-    } 
+    }
   };
 
   const buttonFunctions = {
     dataFn: dataFn,
     dataFn2: dataFn2,
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -93,14 +88,16 @@ const Pages1 = () => {
       {divList.map((item) => (
         <div key={item.id}>
           {/* Render each item */}
-          {/* <p>{item.title}</p> */}
-        {/* </div> */}
+      {/* <p>{item.title}</p> */}
+      {/* </div> */}
       {/* // ))} */}
-    {/* </div> */} 
+      {/* </div> */}
 
       <FlatList
         data={divList}
-        renderItem={({ item }) => <Item title={item.title} description={item.description} />}
+        renderItem={({ item }) => (
+          <Item title={item.title} description={item.description} />
+        )}
         keyExtractor={(item) => item.id}
       />
 
@@ -116,9 +113,9 @@ const Pages1 = () => {
         buttonFunctions={buttonFunctions}
         addDivToList={addDivToList}
       />
-      
+
+
     </SafeAreaView>
-    
   );
 };
 
