@@ -46,7 +46,9 @@ const Pages2 = () => {
     });
   };
 
-  
+  const storedArrayString = localStorage.getItem('storageList');
+  const storedArray = JSON.parse(storedArrayString);
+  console.log(storedArray);
 
   const addDivToList = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;

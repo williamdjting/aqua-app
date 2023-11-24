@@ -11,6 +11,7 @@ import {
 import ConnectButton from "../components/Connect-Button";
 import DataButton from "../components/Data-Button";
 
+import { createContext } from 'react';
 
 
 // const DATA = [
@@ -28,6 +29,8 @@ import DataButton from "../components/Data-Button";
 //   },
 // ];
 
+
+
 const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
@@ -41,6 +44,8 @@ const Pages1 = () => {
   const [receivedData, setReceivedData] = useState("No data received yet");
 
   const [divList, setDivList] = useState([]);
+
+  const [storageList, setStorageList] = useState([]);
 
   const [divCounter, setDivCounter] = useState(0);
 
@@ -60,8 +65,12 @@ const Pages1 = () => {
     };
 
     setDivList([newDiv]);
+    setStorageList([...storageList, newDiv]);
+    var newStorageArray = JSON.stringify(storageList);
+    
+    localStorage.setItem("storageList", newStorageArray);
     setDivCounter(divCounter + 1);
-    printArrayElements(newDiv);
+    printArrayElements(newStorageArray);
   };
 
   const dataFn = () => {
