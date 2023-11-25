@@ -33,87 +33,104 @@ const Item = ({ title }) => (
 );
 
 const Pages2 = () => {
-  const [connectionStatus, setConnectionStatus] = useState(
-    "Connect to a device"
-  );
-  const [receivedData, setReceivedData] = useState("No data received yet");
+  // const [connectionStatus, setConnectionStatus] = useState(
+  //   "Connect to a device"
+  // );
+  // const [receivedData, setReceivedData] = useState("No data received yet");
 
-  const [divList, setDivList] = useState([]);
+  // const [divList, setDivList] = useState([]);
 
-  const printArrayElements = (array) => {
-    array.forEach((element, index) => {
-      console.log(`Element ${index + 1}:`, element);
-    });
-  };
+  // const printArrayElements = (array) => {
+  //   array.forEach((element, index) => {
+  //     console.log(`Element ${index + 1}:`, element);
+  //   });
+  // };
 
-  const storedArrayString = localStorage.getItem('storageList');
+  // const storedArrayString = localStorage.getItem('storageList');
+  // const storedArray = JSON.parse(storedArrayString);
+  // console.log(storedArray);
+
+  // const addDivToList = () => {
+  //   // const newDiv = <div key={divList.length}>New Div</div>;
+  //   const newDiv = {
+  //     id: (divList.length + 1).toString(), // Generating a new ID based on array length
+  //     title: `New Item ${divList.length + 1}`, // Example title
+  //   };
+  //   setDivList([...divList, newDiv]);
+  //   printArrayElements(divList);
+  // };
+
+  // const dataFn = () => {
+  //   if (connectionStatus == "Connected") {
+  //     setReceivedData("Data Received");
+
+  //   }
+
+  //   else {
+  //     setReceivedData("Please connect to the device first");
+  //   }
+
+  // };
+  // const dataFn2 = () => {
+  //   if (receivedData == "Data Received") {
+  //     setReceivedData("Ready to receive data");
+  //   }
+  // };
+
+  // const buttonFunctions = {
+  //   dataFn: dataFn,
+  //   dataFn2: dataFn2,
+  // }
+
+  const storedArrayString = localStorage.getItem("storageList");
+  console.log("pages-2.js line 87", storedArrayString);
   const storedArray = JSON.parse(storedArrayString);
-  console.log(storedArray);
+  console.log("pages-2.js line 88", storedArray);
 
-  const addDivToList = () => {
-    // const newDiv = <div key={divList.length}>New Div</div>;
-    const newDiv = {
-      id: (divList.length + 1).toString(), // Generating a new ID based on array length
-      title: `New Item ${divList.length + 1}`, // Example title
-    };
-    setDivList([...divList, newDiv]);
-    printArrayElements(divList);
-  };
+  return storedArray.map((item) => {
+    return (
+      <SafeAreaView style={styles.container}>
 
+        <div key={item.id} style={styles.item}>
+          <p style={styles.title}>Data: {item.title}</p>
+          <p style={styles.title}>Description: {item.description}</p>
+        </div>
+  
+      </SafeAreaView>
+    );
+  });
 
-  const dataFn = () => {
-    if (connectionStatus == "Connected") {
-      setReceivedData("Data Received");
+  // return (
+  // <SafeAreaView style={styles.container}>
+  //   {/* <div>
+  //   {divList.map((item) => (
+  //     <div key={item.id}>
+  //       {/* Render each item */}
+  //       {/* <p>{item.title}</p> */}
+  //     {/* </div> */}
+  //   {/* // ))} */}
+  // {/* </div> */}
+  //   <FlatList
+  //     data={divList}
+  //     renderItem={({ item }) => <Item title={item.title} />}
+  //     keyExtractor={(item) => item.id}
+  //   />
+  //   <ConnectButton
+  //     connectionStatus={connectionStatus}
+  //     setConnectionStatus={setConnectionStatus}
+  //   />
 
-    } 
+  //   <DataButton
+  //     connectionStatus={connectionStatus}
+  //     receivedData={receivedData}
+  //     setReceivedData={setReceivedData}
+  //     buttonFunctions={buttonFunctions}
+  //     addDivToList={addDivToList}
+  //   />
 
-    else {
-      setReceivedData("Please connect to the device first");
-    }
-    
-  };
-  const dataFn2 = () => {
-    if (receivedData == "Data Received") {
-      setReceivedData("Ready to receive data");
-    } 
-  };
+  // </SafeAreaView>
 
-  const buttonFunctions = {
-    dataFn: dataFn,
-    dataFn2: dataFn2,
-  }
-
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* <div>
-      {divList.map((item) => (
-        <div key={item.id}>
-          {/* Render each item */}
-          {/* <p>{item.title}</p> */}
-        {/* </div> */}
-      {/* // ))} */}
-    {/* </div> */} 
-      <FlatList
-        data={divList}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={(item) => item.id}
-      />
-      <ConnectButton
-        connectionStatus={connectionStatus}
-        setConnectionStatus={setConnectionStatus}
-      />
-
-      <DataButton
-        connectionStatus={connectionStatus}
-        receivedData={receivedData}
-        setReceivedData={setReceivedData}
-        buttonFunctions={buttonFunctions}
-        addDivToList={addDivToList}
-      />
-      
-    </SafeAreaView>
-    
-  );
+  // );
 };
 
 const styles = StyleSheet.create({
@@ -123,15 +140,15 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#f9c2ff",
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 90,
-    paddingRight: 90,
-    marginVertical: 8,
+    // paddingTop: 20,
+    // paddingBottom: 20,
+    paddingLeft: 40,
+    paddingRight: 40,
+    marginVertical: 2,
     marginHorizontal: 2,
   },
   title: {
-    fontSize: 32,
+    fontSize: 16,
     textAlign: "center",
   },
 });

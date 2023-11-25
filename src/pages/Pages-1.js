@@ -60,7 +60,7 @@ const Pages1 = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;
     const newDiv = {
       id: divCounter.toString(), // Generating a new ID based on array length
-      title: `Read ${divCounter}`, // Example title
+      title: `${divCounter}`, // Example title
       description: `This is data for Read ${divCounter}`,
     };
 
