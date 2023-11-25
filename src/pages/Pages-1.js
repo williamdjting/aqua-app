@@ -60,8 +60,8 @@ const Pages1 = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;
     const newDiv = {
       id: divCounter.toString(), // Generating a new ID based on array length
-      title: `${divCounter}`, // Example title
-      description: `This is data for Read ${divCounter}`,
+      title: `Read ${divCounter}`, // Example title
+      description: `This is data for read ${divCounter}`,
     };
 
     setDivList([newDiv]);
@@ -91,6 +91,8 @@ const Pages1 = () => {
     dataFn2: dataFn2,
   };
 
+  
+
   return (
     <SafeAreaView style={styles.container}>
       {/* <div>
@@ -105,10 +107,13 @@ const Pages1 = () => {
       <FlatList
         data={divList}
         renderItem={({ item }) => (
-          <Item title={item.title} description={item.description} />
+          <Item title={item.title} 
+          description={item.description} />
         )}
         keyExtractor={(item) => item.id}
       />
+
+
 
       <ConnectButton
         connectionStatus={connectionStatus}
@@ -134,7 +139,7 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: "#2596be",
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 90,

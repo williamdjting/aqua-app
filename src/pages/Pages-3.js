@@ -10,6 +10,7 @@ import {
 
 import ConnectButton from "../components/Connect-Button";
 import DataButton from "../components/Data-Button";
+import ExportButton from "../components/Export-Button";
 
 // const DATA = [
 //   {
@@ -46,8 +47,6 @@ const Pages3 = () => {
     });
   };
 
-  
-
   const addDivToList = () => {
     // const newDiv = <div key={divList.length}>New Div</div>;
     const newDiv = {
@@ -58,28 +57,23 @@ const Pages3 = () => {
     printArrayElements(divList);
   };
 
-
   const dataFn = () => {
     if (connectionStatus == "Connected") {
       setReceivedData("Data Received");
-
-    } 
-
-    else {
+    } else {
       setReceivedData("Please connect to the device first");
     }
-    
   };
   const dataFn2 = () => {
     if (receivedData == "Data Received") {
       setReceivedData("Ready to receive data");
-    } 
+    }
   };
 
   const buttonFunctions = {
     dataFn: dataFn,
     dataFn2: dataFn2,
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -87,30 +81,33 @@ const Pages3 = () => {
       {divList.map((item) => (
         <div key={item.id}>
           {/* Render each item */}
-          {/* <p>{item.title}</p> */}
-        {/* </div> */}
+      {/* <p>{item.title}</p> */}
+      {/* </div> */}
       {/* // ))} */}
-    {/* </div> */} 
-      <FlatList
+      {/* </div> */}
+      {/* <FlatList
         data={divList}
         renderItem={({ item }) => <Item title={item.title} />}
         keyExtractor={(item) => item.id}
-      />
-      <ConnectButton
+      /> */}
+      {/* <ConnectButton
+        connectionStatus={connectionStatus}
+        setConnectionStatus={setConnectionStatus}
+      /> */}
+
+      <ExportButton
         connectionStatus={connectionStatus}
         setConnectionStatus={setConnectionStatus}
       />
 
-      <DataButton
+      {/* <DataButton
         connectionStatus={connectionStatus}
         receivedData={receivedData}
         setReceivedData={setReceivedData}
         buttonFunctions={buttonFunctions}
         addDivToList={addDivToList}
-      />
-      
+      /> */}
     </SafeAreaView>
-    
   );
 };
 

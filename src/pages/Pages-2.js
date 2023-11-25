@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -33,6 +33,8 @@ const Item = ({ title }) => (
 );
 
 const Pages2 = () => {
+
+  
   // const [connectionStatus, setConnectionStatus] = useState(
   //   "Connect to a device"
   // );
@@ -87,6 +89,12 @@ const Pages2 = () => {
   const storedArray = JSON.parse(storedArrayString);
   console.log("pages-2.js line 88", storedArray);
 
+  const [renderedItems, setRenderedItems] = useState([]);
+
+  useEffect(() => {
+    setRenderedItems([]);
+  }, []);
+
   return storedArray.map((item) => {
     return (
       <SafeAreaView style={styles.container}>
@@ -95,7 +103,7 @@ const Pages2 = () => {
           <p style={styles.title}>Data: {item.title}</p>
           <p style={styles.title}>Description: {item.description}</p>
         </div>
-  
+        
       </SafeAreaView>
     );
   });
@@ -139,16 +147,17 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: "#2596be",
     // paddingTop: 20,
     // paddingBottom: 20,
     paddingLeft: 40,
     paddingRight: 40,
-    marginVertical: 2,
-    marginHorizontal: 2,
+    marginVertical: 1,
+    marginHorizontal: 1,
   },
   title: {
-    fontSize: 16,
+    fontSize: 12,
+    fontWeight: "regular",
     textAlign: "center",
   },
 });

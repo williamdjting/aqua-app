@@ -10,7 +10,7 @@ import {
 
 // const Separator = () => <View style={styles.separator} />;
 
-const ConnectButton = ({ connectionStatus, setConnectionStatus }) => {
+const ExportButton = ({ connectionStatus, setConnectionStatus }) => {
 
 
   const connectFn = () => {
@@ -23,7 +23,7 @@ const ConnectButton = ({ connectionStatus, setConnectionStatus }) => {
 
       <Button
         style={styles.button}
-        title={connectionStatus}
+        title={"Export Data"}
         onPress={() => {
           connectFn();
         }}
@@ -39,11 +39,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#2596be',
     padding: 10,
     margin: 10,
+    
   },
   container: {
     // flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
+    marginTop: 300,
   },
   title: {
     textAlign: 'center',
@@ -60,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConnectButton;
+export default ExportButton;
