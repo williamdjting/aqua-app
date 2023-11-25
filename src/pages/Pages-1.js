@@ -38,6 +38,8 @@ const Item = ({ title }) => (
 );
 
 const Pages1 = () => {
+
+
   const [connectionStatus, setConnectionStatus] = useState(
     "Connect to a device"
   );
@@ -66,6 +68,7 @@ const Pages1 = () => {
 
     setDivList([newDiv]);
     setStorageList([...storageList, newDiv]);
+    
     var newStorageArray = JSON.stringify(storageList);
     
     localStorage.setItem("storageList", newStorageArray);
